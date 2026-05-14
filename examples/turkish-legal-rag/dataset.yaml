@@ -1,0 +1,82 @@
+default_judges:
+  - kind: contains
+    name: phrase_check
+    weight: 0.4
+  - kind: llm_judge
+    name: rubric_check
+    weight: 0.6
+    config:
+      model: claude-sonnet-4-6
+      threshold: 0.7
+      rubric:
+        - name: faithfulness
+          description: "Cevap, sağlanan hukuki context'e dayanır ve uydurma içermez."
+          weight: 1.5
+        - name: legal_correctness
+          description: "Yanıt Türk Medeni Kanunu / Borçlar Kanunu'na uygundur ve doğru madde/yorum atıflarını içerir."
+          weight: 1.5
+        - name: completeness
+          description: "Sorunun tüm önemli boyutlarını (süre, koşullar, istisnalar) kapsar."
+          weight: 1.0
+        - name: language_quality
+          description: "Türkçe gramer ve hukuki dil doğru ve net."
+          weight: 0.5
+
+cases:
+  - id: bosanma_sure
+    input:
+      question: "Anlaşmalı boşanma davası ne kadar sürer?"
+    expected:
+      must_mention: ["anlaşmalı", "duruşma"]
+      must_not_mention: ["kesin olarak 6 ay"]
+    tags: [aile-hukuku, sure]
+
+  - id: kira_artis_orani
+    input:
+      question: "Konut kira sözleşmelerinde yıllık kira artış oranı nasıl belirlenir?"
+    expected:
+      must_mention: ["TÜFE", "tüketici fiyat endeksi"]
+      must_not_mention: []
+    tags: [borclar-hukuku, kira]
+
+  - id: mirastan_feragat
+    input:
+      question: "Mirastan feragat sözleşmesi nasıl yapılır ve geri alınabilir mi?"
+    expected:
+      must_mention: ["noter", "yazılı"]
+    tags: [miras-hukuku]
+
+  - id: isten_cikarma_tazminat
+    input:
+      question: "İşveren tarafından geçerli sebep olmadan işten çıkarılan işçi hangi tazminatları talep edebilir?"
+    expected:
+      must_mention: ["kıdem", "ihbar"]
+    tags: [is-hukuku, tazminat]
+
+  - id: senet_zaman_asimi
+    input:
+      question: "Bono ve poliçede zamanaşımı süresi ne kadardır?"
+    expected:
+      must_mention: ["3 yıl"]
+    tags: [ticaret-hukuku, zamanasimi]
+
+  - id: tuketici_iade
+    input:
+      question: "Mesafeli satışlarda tüketicinin cayma hakkı kaç gündür ve hangi durumlarda kullanılamaz?"
+    expected:
+      must_mention: ["14 gün", "cayma"]
+    tags: [tuketici-hukuku]
+
+  - id: nafaka_turleri
+    input:
+      question: "Boşanma sonrası verilen nafaka türleri nelerdir?"
+    expected:
+      must_mention: ["yoksulluk", "iştirak", "tedbir"]
+    tags: [aile-hukuku, nafaka]
+
+  - id: vergi_uzlasma
+    input:
+      question: "Vergi ziyaı cezasında uzlaşma müessesesi nedir?"
+    expected:
+      must_mention: ["uzlaşma", "vergi ziyaı"]
+    tags: [vergi-hukuku]
