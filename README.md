@@ -111,13 +111,34 @@ Every verdict carries: `score`, `passed`, `reasoning`, `failed_criteria`, `cost_
 
 Built as part of my AI engineer portfolio. The goal: show that **shipping LLM apps without an eval harness is shipping blind**, and that "an eval harness" should mean *typed failure analysis*, not a single number.
 
+## Dashboard
+
+A Next.js 14 dashboard lives in `dashboard/`. It reads from the same `runs/` directory, so any local eval run shows up immediately.
+
+```bash
+cd dashboard
+npm install
+npm run dev     # http://localhost:3000
+```
+
+Three views:
+
+- `/` — list of runs (pass rate, mean score, total cost, sortable by recency)
+- `/runs/[id]` — per-case results with expandable rubric breakdowns (per-criterion score, evidence quote, failed criteria)
+- `/compare?a=...&b=...` — diff two runs (regressions in red, fixes in green, per-case score deltas)
+
+The dashboard is filesystem-backed — no database, no auth, no deploy required for local use.
+
 ## Status
 
-Day 1 of a 6-day build. Currently shipped: core engine, four judges, runner, CLI for reports/diffs, a real-world example.
+Days 1 + 3 shipped (Day 2 dogfood postponed). Currently:
+- ✅ Python core engine, four judges, async runner, CLI
+- ✅ Next.js 14 dashboard with run list / detail / compare views
+- ✅ Real-world example dataset (Turkish legal RAG, 8 cases)
 
 Up next:
-- [ ] Next.js dashboard for run-to-run comparison
-- [ ] GitHub Action for PR regression checks
+- [ ] Day 2 redo: real eval data (multi-model Claude comparison, no torch)
+- [ ] GitHub Action: regression-check on PRs
 - [ ] More judges: `regex`, `json_schema`, `tool_call_match`
 
 ## License

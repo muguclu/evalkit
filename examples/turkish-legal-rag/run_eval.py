@@ -1,14 +1,17 @@
-"""Dogfood example: evaluate a Turkish legal RAG pipeline with EvalKit.
+"""Dogfood: evaluate the turkish-legal-rag pipeline with EvalKit.
 
-This script is a template. Plug in your own RAG chain in `candidate_fn`
-and point DATASET_PATH at the YAML file.
+Supports two candidate modes:
 
-Usage:
-    export ANTHROPIC_API_KEY=...
-    python run_eval.py
+    python run_eval.py --mode baseline     # raw Claude, no retrieval
+    python run_eval.py --mode rag          # full RAG chain with ChromaDB
+
+After running both, compare with:
+
+    evalkit diff runs/<baseline_id> runs/<rag_id>
 """
 from __future__ import annotations
 
+import argparse
 import asyncio
 import os
 import sys
@@ -17,7 +20,12 @@ from pathlib import Path
 if hasattr(sys.stdout, "reconfigure"):
     sys.stdout.reconfigure(encoding="utf-8", errors="replace")
 
+from dotenv import load_dotenv
 from rich.console import Console
+
+# Load .env from evalkit project root.
+ROOT = Path(__file__).resolve().parents[2]
+load_dotenv(ROOT / ".env")
 
 from evalkit import Runner, TestCase, load_dataset
 from evalkit.report import render_markdown, save_run
@@ -25,23 +33,16 @@ from evalkit.report import render_markdown, save_run
 console = Console()
 
 DATASET_PATH = Path(__file__).parent / "dataset.yaml"
-RUNS_DIR = Path(__file__).parent.parent.parent / "runs"
+RUNS_DIR = ROOT / "runs"
+
+# Path to muguclu/turkish-legal-rag local clone.
+LEGAL_RAG_REPO = Path("C:/Users/guclu/turkish-legal-rag")
 
 
 # ---------------------------------------------------------------------------
-# Plug your RAG pipeline here.
+# Baseline: vanilla Claude, no retrieval.
 # ---------------------------------------------------------------------------
-async def candidate_fn(case: TestCase) -> str:
-    """Return the candidate system's answer for a single test case.
-
-    Replace the body of this function with a call into your RAG chain.
-    For example, if you have a LangChain `rag_chain`:
-
-        from rag.chain import rag_chain
-        result = await rag_chain.ainvoke({"question": case.input["question"]})
-        return result["answer"]
-    """
-    # Placeholder: call Claude directly with no retrieval. Replace with your RAG.
+async def baseline_candidate(case: TestCase) -> str:
     from anthropic import AsyncAnthropic
 
     client = AsyncAnthropic(api_key=os.environ["ANTHROPIC_API_KEY"])
@@ -54,19 +55,58 @@ async def candidate_fn(case: TestCase) -> str:
         ),
         messages=[{"role": "user", "content": case.input["question"]}],
     )
-    return "".join(b.text for b in response.content if getattr(b, "type", None) == "text")
+    return "".join(
+        b.text for b in response.content if getattr(b, "type", None) == "text"
+    )
+
+
+# ---------------------------------------------------------------------------
+# RAG: real turkish-legal-rag pipeline (LangChain + ChromaDB + Claude).
+# ---------------------------------------------------------------------------
+def _import_legal_rag():
+    """Add the turkish-legal-rag repo to sys.path and import its ask()."""
+    if str(LEGAL_RAG_REPO) not in sys.path:
+        sys.path.insert(0, str(LEGAL_RAG_REPO))
+    from src.chain import ask  # type: ignore
+
+    return ask
+
+
+async def rag_candidate(case: TestCase) -> str:
+    ask = _import_legal_rag()
+    result = await asyncio.to_thread(ask, case.input["question"])
+    case.context = result["context"]
+    return result["answer"]
+
+
+CANDIDATES = {
+    "baseline": (baseline_candidate, "claude-sonnet-4-6-noRAG"),
+    "rag": (rag_candidate, "turkish-legal-rag-v1"),
+}
 
 
 async def main() -> None:
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--mode", choices=list(CANDIDATES), default="baseline")
+    parser.add_argument("--concurrency", type=int, default=3)
+    args = parser.parse_args()
+
+    candidate_fn, label = CANDIDATES[args.mode]
     cases = load_dataset(DATASET_PATH)
-    console.print(f"[bold]Loaded {len(cases)} cases from {DATASET_PATH}[/bold]")
+    console.print(
+        f"[bold]Mode:[/bold] {args.mode}  "
+        f"[bold]Candidate:[/bold] {label}  "
+        f"[bold]Cases:[/bold] {len(cases)}"
+    )
 
     runner = Runner(
         candidate_fn=candidate_fn,
-        candidate_label="claude-sonnet-4-6-noRAG-baseline",
-        concurrency=3,
+        candidate_label=label,
+        concurrency=args.concurrency,
         on_case_complete=lambda r: console.print(
-            f"  {'✅' if r.passed else '❌'} {r.case_id} → {r.aggregate_score:.2f}"
+            f"  {'[green]PASS[/green]' if r.passed else '[red]FAIL[/red]'} "
+            f"{r.case_id} -> {r.aggregate_score:.2f}"
+            + (f" — {r.error}" if r.error else "")
         ),
     )
     run = await runner.run(cases, dataset_path=str(DATASET_PATH))
