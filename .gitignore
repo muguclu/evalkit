@@ -20,3 +20,7 @@ node_modules/
 .DS_Store
 runs/*/
 !runs/.gitkeep
+# Demo runs committed for the dashboard to render real data out of the box.
+!runs/d2a328aa0843/
+!runs/76f17871fb40/
+!runs/969f34941021/

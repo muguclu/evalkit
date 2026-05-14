@@ -103,9 +103,24 @@ evalkit diff runs/<baseline_id> runs/<candidate_id> --fail-on-regression
 
 Every verdict carries: `score`, `passed`, `reasoning`, `failed_criteria`, `cost_usd`, `latency_ms`.
 
-## Real-world example: Turkish Legal RAG
+## Real-world example: Turkish Legal Q&A across three Claude variants
 
-`examples/turkish-legal-rag/` evaluates a RAG pipeline over Turkish legal documents with an 8-case golden set and a four-criterion legal-correctness rubric. Drop in your own `candidate_fn` to plug in your retrieval chain.
+`examples/turkish-legal-rag/` runs the same 8-case Turkish legal Q&A
+dataset through three Claude variants (Haiku 4.5 / Sonnet 4.6 / Opus 4.7)
+with a four-criterion legal-correctness rubric. Full writeup including
+the LLM judge's evidence quotes lives at
+[`examples/turkish-legal-rag/FINDINGS.md`](examples/turkish-legal-rag/FINDINGS.md).
+
+| Model | Pass rate | Mean score | Cost |
+|---|---:|---:|---:|
+| `claude-haiku-4-5`  | 0/8 (0%)    | 0.631 | $0.16 |
+| `claude-sonnet-4-6` | 3/8 (37.5%) | **0.827** | $0.17 |
+| `claude-opus-4-7`   | 3/8 (37.5%) | 0.812 | $0.16 |
+
+The headline: **Opus 4.7 doesn't beat Sonnet 4.6 on this task.**
+Mean-score delta is −0.014 in Sonnet's favor; per-case deltas show two
+roughly-canceling swings (Opus is +0.21 on one case, −0.22 on another).
+This is the kind of judgement aggregate-score frameworks can't make.
 
 ## Why I built this
 
@@ -131,15 +146,17 @@ The dashboard is filesystem-backed — no database, no auth, no deploy required 
 
 ## Status
 
-Days 1 + 3 shipped (Day 2 dogfood postponed). Currently:
+Days 1, 3, 5 shipped. Currently:
 - ✅ Python core engine, four judges, async runner, CLI
 - ✅ Next.js 14 dashboard with run list / detail / compare views
-- ✅ Real-world example dataset (Turkish legal RAG, 8 cases)
+- ✅ Real-world example: three Claude models head-to-head on Turkish
+  legal Q&A, with findings writeup
 
 Up next:
-- [ ] Day 2 redo: real eval data (multi-model Claude comparison, no torch)
-- [ ] GitHub Action: regression-check on PRs
+- [ ] GitHub Action: PR regression check (Day 4)
+- [ ] Repeat the dogfood with real retrieval (turkish-legal-rag chain)
 - [ ] More judges: `regex`, `json_schema`, `tool_call_match`
+- [ ] README screenshots / demo gif
 
 ## License
 

@@ -1,0 +1,504 @@
+{
+  "run_id": "76f17871fb40",
+  "started_at": "2026-05-14T23:27:35.133785Z",
+  "finished_at": "2026-05-14T23:28:37.404379Z",
+  "dataset_path": "C:\\Users\\guclu\\evalkit\\examples\\turkish-legal-rag\\dataset.yaml",
+  "candidate_label": "claude-sonnet-4-6-noRAG",
+  "cases": [
+    {
+      "case_id": "bosanma_sure",
+      "candidate_output": "## Anlaşmalı Boşanma Davası Süresi\n\n### Genel Süre\nAnlaşmalı boşanma davaları, Türkiye'deki boşanma türleri arasında **en hızlı sonuçlanan** davalardır. Ortalama **1 ila 3 ay** içinde sonuçlanabilir.\n\n---\n\n### Süreci Etkileyen Faktörler\n\n**Kısa sürmesini sağlayan koşullar:**\n- Tarafların duruşmaya birlikte katılması\n- Protokolün eksiksiz ve hukuka uygun hazırlanmış olması\n- Mahkemenin iş yoğunluğunun az olması\n\n**Süreyi uzatabilecek faktörler:**\n- Mahkemenin yoğun olması\n- Taraflardan birinin duruşmaya gelmemesi\n- Protokolde eksiklik veya hukuka aykırılık bulunması\n- Bulunulan şehir (büyükşehirlerde daha uzun sürebilir)\n\n---\n\n### Süreç Adımları\n\n1. **Dava dilekçesi ve protokolün hazırlanması**\n2. **Mahkemeye başvuru**\n3. **Duruşma günü belirlenmesi** *(genellikle 2-8 hafta içinde)*\n4. **Tek celsede karar** *(hâkim tarafları bizzat dinler)*\n5. **Kararın kesinleşmesi** *(2 hafta itiraz süresi)*\n\n---\n\n### Önemli Notlar\n\n- Evlilik **en az 1 yıl** sürmüş olmalıdır.\n- Her iki eşin duruşmada **bizzat hazır bulunması** zorunludur.\n- Protokol; mal paylaşımı, nafaka ve varsa çocukların velayetini kapsamalıdır.\n\n---\n\nDaha ayrıntılı bilgi için bir avukattan destek almanızı öneririm.",
+      "verdicts": [
+        {
+          "judge_name": "phrase_check",
+          "judge_kind": "contains",
+          "passed": true,
+          "score": 1.0,
+          "reasoning": "all phrase checks passed",
+          "failed_criteria": [],
+          "cost_usd": 0.0,
+          "latency_ms": 0.0,
+          "raw": {}
+        },
+        {
+          "judge_name": "rubric_check",
+          "judge_kind": "llm_judge",
+          "passed": true,
+          "score": 0.8222222222222222,
+          "reasoning": "Aday cevap, anlaşmalı boşanma davası süresini doğru ve kapsamlı biçimde ele almaktadır. 'Anlaşmalı' ve 'duruşma' kelimeleri gerektiği gibi yer almakta; yasaklı ifade olan 'kesin olarak 6 ay' kullanılmamaktadır. Hukuki içerik Türk Medeni Kanunu'na uygundur; ancak ilgili madde numarasına (TMK m. 166/3) atıf yapılmamış olması legal_correctness açısından hafif bir eksikliktir. Dil kalitesi yüksek, yapı düzenli ve bilgiler güvenilirdir. Genel olarak başarılı bir yanıttır.",
+          "failed_criteria": [],
+          "cost_usd": 0.021204,
+          "latency_ms": 17777.963000000454,
+          "raw": {
+            "scores": {
+              "faithfulness": {
+                "score": 0.85,
+                "evidence": "Cevap, anlaşmalı boşanma süreci hakkında genel hukuki bilgilerle tutarlı bilgiler sunmaktadır. '1 ila 3 ay içinde sonuçlanabilir', 'hâkim tarafları bizzat dinler', 'evlilik en az 1 yıl sürmüş olmalıdır' gibi bilgiler Türk hukukuyla uyumludur. Herhangi bir uydurma veya yanıltıcı içerik tespit edilmemiştir.",
+                "passed": true
+              },
+              "legal_correctness": {
+                "score": 0.7,
+                "evidence": "Cevap, TMK madde 166/3'e atıfta bulunmamış olsa da içerik doğrudur: 'Evlilik en az 1 yıl sürmüş olmalıdır', 'Her iki eşin duruşmada bizzat hazır bulunması zorunludur', 'Protokol; mal paylaşımı, nafaka ve varsa çocukların velayetini kapsamalıdır.' Kararın kesinleşmesi için 2 hafta itiraz süresi belirtilmiş; ancak bu süre teknik olarak tebliğden itibaren 2 hafta (15 gün) olup doğrudur. Madde numarası verilmemiş olması bir eksikliktir.",
+                "passed": true
+              },
+              "completeness": {
+                "score": 0.9,
+                "evidence": "Cevap; genel süre (1-3 ay), süreyi etkileyen faktörler, süreç adımları (duruşma dahil), koşullar (1 yıl evlilik şartı, bizzat hazır bulunma) ve protokol içeriği gibi önemli boyutları kapsamaktadır. 'must_mention' listesindeki 'anlaşmalı' ve 'duruşma' kelimeleri metinde geçmekte; 'must_not_mention' listesindeki 'kesin olarak 6 ay' ifadesi kullanılmamaktadır.",
+                "passed": true
+              },
+              "language_quality": {
+                "score": 0.95,
+                "evidence": "Cevap açık, akıcı ve doğru Türkçe ile yazılmıştır. Başlıklar, maddeler ve vurgular düzenli biçimde kullanılmış; hukuki terminoloji doğru ve anlaşılır şekilde uygulanmıştır. 'Tek celsede karar', 'protokol', 'kesinleşme' gibi hukuki terimler yerinde kullanılmıştır.",
+                "passed": true
+              }
+            },
+            "model": "claude-sonnet-4-6",
+            "input_tokens": 1993,
+            "output_tokens": 1015
+          }
+        }
+      ],
+      "aggregate_score": 0.8933333333333333,
+      "passed": true,
+      "tags": [
+        "aile-hukuku",
+        "sure"
+      ],
+      "error": null
+    },
+    {
+      "case_id": "kira_artis_orani",
+      "candidate_output": "# Konut Kira Sözleşmelerinde Yıllık Kira Artış Oranı\n\n## Yasal Düzenleme\n\nKonut kiralarındaki artış oranı **6098 sayılı Türk Borçlar Kanunu'nun 344. maddesi** ile düzenlenmiştir.\n\n---\n\n## Temel Kural\n\n### Normal Dönem\n- Taraflar artış oranını **serbestçe kararlaştırabilir**; ancak belirlenen oran **bir önceki kira yılında açıklanan TÜFE (12 aylık ortalamalara göre değişim) oranını geçemez**.\n- Sözleşmede artış oranı belirlenmemişse hâkim, TÜFE'yi esas alarak hakkaniyete uygun bir kira bedeli belirler.\n\n### Geçici/İstisna Dönem (Uzatma)\n- **5 yılı aşan** kira ilişkilerinde hâkim; TÜFE, kiralananın durumu ve emsal kira bedelleri gibi ölçütleri göz önünde tutarak hakkaniyete uygun artışa hükmedebilir.\n\n---\n\n## Önemli İstisna: Geçici Yasal Düzenleme\n\n> ⚠️ Yüksek enflasyon döneminde çıkarılan geçici düzenlemelerle konut kirası artışları **%25** ile sınırlandırılmıştı. Bu sınırlama birkaç kez uzatıldı; ancak **Temmuz 2024 itibarıyla bu geçici kap sona ermiştir.** Güncel durumu resmi kaynaklardan takip etmenizi tavsiye ederim.\n\n---\n\n## Uygulamada Dikkat Edilecekler\n\n| Konu | Açıklama |\n|------|-----------|\n| **Referans oran** | TÜİK tarafından açıklanan TÜFE (12 aylık ortalama) |\n| **Sözleşmede daha yüksek oran** | Geçersiz sayılır, yasal üst sınır uygulanır |\n| **Artış zamanı** | Gen",
+      "verdicts": [
+        {
+          "judge_name": "phrase_check",
+          "judge_kind": "contains",
+          "passed": false,
+          "score": 0.5,
+          "reasoning": "1/2 phrase checks failed",
+          "failed_criteria": [
+            "missing required phrases: ['tüketici fiyat endeksi']"
+          ],
+          "cost_usd": 0.0,
+          "latency_ms": 0.0,
+          "raw": {}
+        },
+        {
+          "judge_name": "rubric_check",
+          "judge_kind": "llm_judge",
+          "passed": true,
+          "score": 0.8377777777777777,
+          "reasoning": "Aday cevap, konut kira artış oranına ilişkin temel yasal çerçeveyi (TBK m. 344) doğru şekilde aktarmış; TÜFE referans oranını, 5 yıl üzeri kuralını ve geçici %25 tavanını açıklamıştır. Beklenen davranışta belirtilen \"TÜFE\" ve \"tüketici fiyat endeksi\" kavramları cevaba dahil edilmiştir. Ancak cevabın sonu eksik bırakılmış ('Gen...' ile kesilmiş), bu da hem bütünlüğü hem de dil kalitesini olumsuz etkilemiştir. Genel olarak güvenilir ve hukuki açıdan yeterince doğru bir yanıttır.",
+          "failed_criteria": [],
+          "cost_usd": 0.020325,
+          "latency_ms": 15040.493099999367,
+          "raw": {
+            "scores": {
+              "faithfulness": {
+                "score": 0.85,
+                "evidence": "Cevap, TBK 344. maddesine atıfta bulunarak TÜFE'yi referans oran olarak doğru biçimde belirtmiştir. Geçici %25 sınırlaması ve süre bilgisi genel olarak doğrudur. Yanıt, 'Temmuz 2024 itibarıyla bu geçici kap sona ermiştir' ifadesini kullanmış; bu bilgi doğruluk açısından kabul edilebilir olmakla birlikte kesin kaynak gösterilmemiştir.",
+                "passed": true
+              },
+              "legal_correctness": {
+                "score": 0.88,
+                "evidence": "6098 sayılı Türk Borçlar Kanunu'nun 344. maddesi doğru atıfla belirtilmiş; 'bir önceki kira yılında açıklanan TÜFE (12 aylık ortalamalara göre değişim) oranını geçemez' ifadesi ve '5 yılı aşan kira ilişkilerinde hâkim; TÜFE, kiralananın durumu ve emsal kira bedelleri gibi ölçütleri göz önünde tutarak hakkaniyete uygun artışa hükmedebilir' açıklaması hukuki olarak doğrudur.",
+                "passed": true
+              },
+              "completeness": {
+                "score": 0.8,
+                "evidence": "Cevap; TÜFE referans oranını, sözleşmede artış oranı belirlenmemesi halini, 5 yıl üzeri kira ilişkisini ve geçici yasal düzenlemeyi (%25 sınırı) kapsamaktadır. Ancak cevap yarım kalmış görünmektedir ('Artış zamanı | Gen...' kısmı kesilmiştir) ve bu eksiklik önemli bir bilgiyi gizlemektedir.",
+                "passed": true
+              },
+              "language_quality": {
+                "score": 0.75,
+                "evidence": "Genel olarak açık ve hukuki dil kullanılmıştır; tablo ve başlıklar düzenlidir. Ancak cevabın sonunda '| **Artış zamanı** | Gen' şeklinde yarım kalan bir satır mevcuttur; bu durum dil kalitesini ve bütünlüğünü olumsuz etkilemektedir.",
+                "passed": true
+              }
+            },
+            "model": "claude-sonnet-4-6",
+            "input_tokens": 2045,
+            "output_tokens": 946
+          }
+        }
+      ],
+      "aggregate_score": 0.7026666666666666,
+      "passed": false,
+      "tags": [
+        "borclar-hukuku",
+        "kira"
+      ],
+      "error": null
+    },
+    {
+      "case_id": "mirastan_feragat",
+      "candidate_output": "# Mirastan Feragat Sözleşmesi\n\n## Tanım\n\nMirastan feragat sözleşmesi; miras bırakanın henüz hayatta olduğu dönemde, mirasçının ilerideki miras hakkından vazgeçmesini konu alan bir sözleşmedir. **Türk Medeni Kanunu madde 528-529** arasında düzenlenmiştir.\n\n---\n\n## Yapılış Şartları\n\n### 1. Şekil Şartı\n- **Resmi vasiyetname şeklinde** yapılması zorunludur\n- Yani **noter huzurunda** düzenlenmesi gerekir\n- Adi yazılı veya sözlü feragat **geçersizdir**\n\n### 2. Taraflar\n- Miras bırakan (muris) ile mirasçı **birlikte** sözleşmeyi imzalar\n- Tek taraflı beyan yeterli değildir\n\n### 3. İvaz (Karşılık)\n- Feragat **bedelli** olabilir (karşılığında para/mal alınabilir)\n- **Bedelsiz** de olabilir\n- Bedelli feragat, sözleşmede açıkça belirtilmelidir\n\n---\n\n## Feragatin Kapsamı\n\n- Tüm miras hakkından feragat edilebilir\n- **Belirli bir kısımdan** feragat de mümkündür\n- Sözleşmede aksi belirtilmedikçe, feragat edenin **altsoyu** da feragatin etkisinden etkilenir (TMK m. 528/2)\n  - Ancak sözleşmede \"sadece feragat eden için geçerlidir\" denilebilir\n\n---\n\n## Geri Alınabilir mi?\n\n### Kural: Geri Alınamaz\nFeragat sözleşmesi iki taraflı bir sözleşme olduğundan **tek taraflı olarak geri alınamaz.**\n\n### İstisnalar\n\n| Durum | Açıklama |\n|-------|-----------|\n| **Karşılıklı anlaşma** | Her iki taraf birlikte noter önünde sözleş",
+      "verdicts": [
+        {
+          "judge_name": "phrase_check",
+          "judge_kind": "contains",
+          "passed": true,
+          "score": 1.0,
+          "reasoning": "all phrase checks passed",
+          "failed_criteria": [],
+          "cost_usd": 0.0,
+          "latency_ms": 0.0,
+          "raw": {}
+        },
+        {
+          "judge_name": "rubric_check",
+          "judge_kind": "llm_judge",
+          "passed": false,
+          "score": 0.7555555555555556,
+          "reasoning": "Cevap, mirastan feragat sözleşmesinin temel unsurlarını (noter huzurunda resmi şekil, taraflar, bedel, kapsam) ve geri alınamazlık ilkesini doğru ve iyi organize edilmiş biçimde ortaya koymuştur. TMK 528-529 atıfları ve 'yazılı' + 'noter' zorunluluğu açıkça yer almaktadır. Bununla birlikte, geri alınabilirlik bölümü (istisnalar tablosu) yarım kalmış; irade fesadı halleri, dava yolları ve diğer istisnalar hiç işlenmemiştir. Bu eksiklik hem tamlık hem de hukuki doğruluk puanlarını olumsuz etkilemektedir.",
+          "failed_criteria": [
+            "completeness (score=0.55): Sözleşmenin yapılış şartları, taraflar, ivaz ve feragatin kapsamı ele alınmış; ancak geri alınabilirlik bölümü tablo yarım bırakılarak kesilmiş: '**Karşılıklı anlaşma** | Her iki taraf birlikte noter önünde sözleş' — irade fesadı halleri, dava yolları ve diğer istisnalar tamamlanamamış."
+          ],
+          "cost_usd": 0.019947,
+          "latency_ms": 17555.937499999345,
+          "raw": {
+            "scores": {
+              "faithfulness": {
+                "score": 0.85,
+                "evidence": "Cevap TMK madde 528-529'a atıf yapıyor, noter huzurunda düzenleme şartını, tarafların birlikte sözleşmeyi imzalaması gerektiğini ve altsoyu etkileyen hükmü (TMK m. 528/2) doğru biçimde aktarıyor. Uydurma içerik tespit edilmedi.",
+                "passed": true
+              },
+              "legal_correctness": {
+                "score": 0.8,
+                "evidence": "Şekil şartı olarak 'resmi vasiyetname şeklinde' ve 'noter huzurunda' düzenleme zorunluluğu doğru belirtilmiş. Bedelli/bedelsiz feragat ayrımı, altsoyun etkilenmesi (TMK m. 528/2) ve tek taraflı geri alınamazlık ilkesi hukuken doğrudur. Ancak cevap yarım kalmış; 'karşılıklı anlaşma' başlığı altındaki tablo tamamlanamamış, dolayısıyla geri alma şartları (iptale yönelik dava hakları, hata/hile/ikrah gibi irade fesadı halleri) eksik kalmış.",
+                "passed": true
+              },
+              "completeness": {
+                "score": 0.55,
+                "evidence": "Sözleşmenin yapılış şartları, taraflar, ivaz ve feragatin kapsamı ele alınmış; ancak geri alınabilirlik bölümü tablo yarım bırakılarak kesilmiş: '**Karşılıklı anlaşma** | Her iki taraf birlikte noter önünde sözleş' — irade fesadı halleri, dava yolları ve diğer istisnalar tamamlanamamış.",
+                "passed": false
+              },
+              "language_quality": {
+                "score": 0.75,
+                "evidence": "Genel olarak açık ve düzgün Türkçe kullanılmış; başlıklar, tablolar ve madde numaraları sistematik biçimde verilmiş. Ancak cevap yarım cümleyle kesildiğinden ('Her iki taraf birlikte noter önünde sözleş') son bölüm dilbilgisel açıdan tamamlanamamış.",
+                "passed": true
+              }
+            },
+            "model": "claude-sonnet-4-6",
+            "input_tokens": 2024,
+            "output_tokens": 925
+          }
+        }
+      ],
+      "aggregate_score": 0.8533333333333334,
+      "passed": false,
+      "tags": [
+        "miras-hukuku"
+      ],
+      "error": null
+    },
+    {
+      "case_id": "isten_cikarma_tazminat",
+      "candidate_output": "# Geçersiz Fesih Halinde İşçinin Talep Edebileceği Tazminatlar\n\n## 1. İş Güvencesi Kapsamındaki İşçiler (İşe İade veya Tazminat)\n\n**Koşullar:** 30 veya daha fazla işçi çalıştıran işyerinde, en az 6 ay kıdemi olan ve belirsiz süreli iş sözleşmesiyle çalışan işçiler için geçerlidir.\n\n### İşe İade Davası\n- İşçi, fesih bildiriminden itibaren **1 ay** içinde arabulucuya, ardından **2 ay** içinde iş mahkemesine başvurabilir.\n- Mahkeme feshi geçersiz bulursa işveren işçiyi **1 ay** içinde işe başlatmak zorundadır.\n\n### İşe Başlatmama Tazminatı\nİşveren işe başlatmazsa **4 ila 8 aylık** ücret tutarında tazminat ödemek zorundadır.\n\n### Boşta Geçen Süre Ücreti\nDava süresince (en fazla **4 aylık**) çalışılmayan süreye ait ücret ve diğer haklar ödenir.\n\n---\n\n## 2. Her İşçinin Talep Edebileceği Tazminatlar\n\n### Kıdem Tazminatı\n- **En az 1 yıl** kıdemi olan işçiye ödenir.\n- Her tam yıl için **30 günlük brüt ücret** esasıyla hesaplanır.\n\n### İhbar Tazminatı\nBildirim süresine uyulmadan yapılan fesihlerde:\n| Kıdem | Bildirim Süresi |\n|-------|----------------|\n| 6 ay – 1,5 yıl | 2 hafta |\n| 1,5 yıl – 3 yıl | 4 hafta |\n| 3 yıl – 6 yıl | 6 hafta |\n| 6 yıldan fazla | 8 hafta |\n\n### Kullanılmayan Yı",
+      "verdicts": [
+        {
+          "judge_name": "phrase_check",
+          "judge_kind": "contains",
+          "passed": false,
+          "score": 0.5,
+          "reasoning": "1/2 phrase checks failed",
+          "failed_criteria": [
+            "missing required phrases: ['ihbar']"
+          ],
+          "cost_usd": 0.0,
+          "latency_ms": 0.0,
+          "raw": {}
+        },
+        {
+          "judge_name": "rubric_check",
+          "judge_kind": "llm_judge",
+          "passed": true,
+          "score": 0.7722222222222221,
+          "reasoning": "",
+          "failed_criteria": [],
+          "cost_usd": 0.021468,
+          "latency_ms": 17895.540199999232,
+          "raw": {
+            "scores": {
+              "faithfulness": {
+                "score": 0.85,
+                "evidence": "Kıdem tazminatı için 'En az 1 yıl kıdemi olan işçiye ödenir. Her tam yıl için 30 günlük brüt ücret esasıyla hesaplanır.' ve ihbar tazminatı tablosu gibi bilgiler Türk iş hukukuyla uyumludur. İş güvencesi kapsamında '30 veya daha fazla işçi çalıştıran işyerinde, en az 6 ay kıdemi olan ve belirsiz süreli iş sözleşmesiyle çalışan işçiler' ifadesi doğrudur. Cevap genel olarak güvenilir bilgi içermekte ancak herhangi bir context sağlanmadığından değerlendirme genel hukuki doğruluk üzerinden yapılmaktadır.",
+                "passed": true
+              },
+              "legal_correctness": {
+                "score": 0.8,
+                "evidence": "İşe iade davası için '1 ay içinde arabulucuya, ardından 2 ay içinde iş mahkemesine başvurabilir' ifadesi, İş Kanunu'ndaki arabuluculuk zorunluluğu ile uyumludur. İşe başlatmama tazminatı '4 ila 8 aylık ücret' olarak doğru belirtilmiştir. Boşta geçen süre ücreti 'en fazla 4 aylık' olarak doğru ifade edilmiştir. İhbar süreleri tablosu İş Kanunu md. 17 ile uyumludur. Ancak madde numaralarına atıf yapılmamış ve cevap 'Kullanılmayan Yı...' diye yarım kalmış, dolayısıyla yıllık izin ücreti talebi tamamlanamamıştır.",
+                "passed": true
+              },
+              "completeness": {
+                "score": 0.7,
+                "evidence": "Cevap kıdem tazminatı ve ihbar tazminatını (beklenen zorunlu unsurlar) kapsamaktadır. İş güvencesi kapsamındaki işçiler için işe iade, işe başlatmama tazminatı ve boşta geçen süre ücreti de ele alınmıştır. Ancak cevap 'Kullanılmayan Yı' kısmında yarıda kesilmiş, yıllık izin ücreti alacağı ve diğer olası alacaklar tamamlanamamıştır. Maddi ve manevi tazminat gibi ek talepler de eksiktir.",
+                "passed": true
+              },
+              "language_quality": {
+                "score": 0.6,
+                "evidence": "Genel olarak Türkçe gramer ve hukuki dil düzgündür; başlıklar, tablolar ve maddeler net biçimde sunulmuştur. Ancak cevap 'Kullanılmayan Yı' şeklinde yarım bırakılmış olup bu ciddi bir dil ve sunum hatasıdır.",
+                "passed": true
+              }
+            },
+            "model": "claude-sonnet-4-6",
+            "input_tokens": 2036,
+            "output_tokens": 1024
+          }
+        }
+      ],
+      "aggregate_score": 0.6633333333333333,
+      "passed": false,
+      "tags": [
+        "is-hukuku",
+        "tazminat"
+      ],
+      "error": null
+    },
+    {
+      "case_id": "senet_zaman_asimi",
+      "candidate_output": "## Bono ve Poliçede Zamanaşımı Süreleri\n\nBono ve poliçeye ilişkin zamanaşımı süreleri **Türk Ticaret Kanunu (TTK) md. 749** kapsamında düzenlenmiştir.\n\n---\n\n### Poliçe (ve Bono) İçin Zamanaşımı Süreleri\n\n| Alacaklı | Borçlu | Süre |\n|----------|--------|------|\n| Hamilin **kabul eden muhatabına** (poliçe) veya **bono borçlusuna** karşı davası | Ana borçlu | **3 yıl** |\n| Hamilin **cirantalara ve düzenleyene** karşı davası | Müracaat borçluları | **1 yıl** |\n| **Ciro yoluyla ödeme yapan cirantanın** diğer cirantalara ve düzenleyene karşı davası | — | **6 ay** |\n\n---\n\n### Sürelerin Başlangıcı\n\n- **3 yıllık süre:** Vadenin dolduğu tarihten itibaren işlemeye başlar.\n- **1 yıllık süre:** Süresinde çekilen **protestonun tarihinden** veya \"gidersiz\" kaydı varsa vadeden itibaren başlar.\n- **6 aylık süre:** Cirantanın senedi ödediği veya aleyhine dava açıldığı tarihten itibaren başlar.\n\n---\n\n### Önemli Notlar\n\n- Bu süreler **hak düşürücü süre değil**, **zamanaşımı süresidir**; dolayısıyla kesilmesi ve durması mümkündür.\n- Zamanaşımı def'i olarak ileri sürülmelidir; hâkim resen dikkate alamaz.\n- Çekte zamanaşımı süreleri farklıdır (TTK md. 814).\n\nHerhangi bir konuda daha fazla açıklama ister misiniz?",
+      "verdicts": [
+        {
+          "judge_name": "phrase_check",
+          "judge_kind": "contains",
+          "passed": true,
+          "score": 1.0,
+          "reasoning": "all phrase checks passed",
+          "failed_criteria": [],
+          "cost_usd": 0.0,
+          "latency_ms": 0.0,
+          "raw": {}
+        },
+        {
+          "judge_name": "rubric_check",
+          "judge_kind": "llm_judge",
+          "passed": true,
+          "score": 0.85,
+          "reasoning": "Aday cevap, soruyu kapsamlı ve yapılandırılmış biçimde yanıtlamaktadır. Beklenen temel bilgi olan \"3 yıl\" süresi açıkça verilmiş; buna ek olarak 1 yıl ve 6 aylık süreler, başlangıç tarihleri ve önemli hukuki notlar da eklenmiştir. Tek zayıf nokta, atıf yapılan madde numarasının (TTK md. 749) yürürlükteki kanundaki gerçek madde numarasıyla örtüşüp örtüşmediğine dair hafif bir belirsizliktir; bu durum faithfulness ve legal_correctness puanlarını hafifçe düşürmektedir. Genel olarak cevap yüksek kalitede ve hukuken doğru kabul edilebilir.",
+          "failed_criteria": [],
+          "cost_usd": 0.020028,
+          "latency_ms": 17263.821499998812,
+          "raw": {
+            "scores": {
+              "faithfulness": {
+                "score": 0.85,
+                "evidence": "Cevap TTK md. 749'a atıfta bulunarak 3 yıl, 1 yıl ve 6 aylık zamanaşımı sürelerini düzenli biçimde açıklamaktadır. Uydurma bilgi içermemekte; ancak madde numarasının doğruluğu teyit edilememiştir (TTK'da poliçe zamanaşımı genel olarak md. 661 vd. kapsamında düzenlenmektedir, md. 749 çek hükümlerine daha yakındır).",
+                "passed": true
+              },
+              "legal_correctness": {
+                "score": 0.75,
+                "evidence": "Ana borçluya karşı 3 yıl, cirantalara karşı 1 yıl, müracaat eden cirantanın diğerlerine karşı 6 ay şeklindeki ayrım hukuken doğrudur. Ancak atıf yapılan 'TTK md. 749' numarası hatalı olabilir; yürürlükteki 6102 sayılı TTK'da poliçe zamanaşımı md. 749'da değil farklı maddede yer almaktadır. Bu durum hukuki doğruluğu kısmen zayıflatmaktadır.",
+                "passed": true
+              },
+              "completeness": {
+                "score": 0.95,
+                "evidence": "Cevap; 3 yıllık, 1 yıllık ve 6 aylık süreleri, sürelerin başlangıç tarihlerini, zamanaşımının hak düşürücü süre olmadığını, def'i olarak ileri sürülmesi gerektiğini ve çek için farklı hükümlerin uygulandığını eksiksiz biçimde ele almaktadır.",
+                "passed": true
+              },
+              "language_quality": {
+                "score": 0.95,
+                "evidence": "Yanıt açık, düzgün Türkçe ile kaleme alınmış; tablo ve başlıklar hukuki terminolojiyi doğru şekilde kullanmaktadır. 'Müracaat borçluları', 'ciro yoluyla ödeme yapan ciranta' gibi teknik ifadeler yerinde kullanılmıştır.",
+                "passed": true
+              }
+            },
+            "model": "claude-sonnet-4-6",
+            "input_tokens": 1951,
+            "output_tokens": 945
+          }
+        }
+      ],
+      "aggregate_score": 0.91,
+      "passed": true,
+      "tags": [
+        "ticaret-hukuku",
+        "zamanasimi"
+      ],
+      "error": null
+    },
+    {
+      "case_id": "tuketici_iade",
+      "candidate_output": "# Mesafeli Satışlarda Cayma Hakkı\n\n## Süre\n\n**6502 Sayılı Tüketicinin Korunması Hakkında Kanun** ve **Mesafeli Sözleşmeler Yönetmeliği** uyarınca tüketici, herhangi bir gerekçe göstermeksizin ve cezai şart ödemeksizin sözleşme tarihinden itibaren **14 gün** içinde cayma hakkını kullanabilir.\n\n> ⚠️ **Önemli:** Satıcı, cayma hakkı konusunda tüketiciyi bilgilendirmemişse bu süre **1 yıl** uzar.\n\n---\n\n## Cayma Hakkının Kullanılamadığı Haller\n\nYönetmeliğin 15. maddesi uyarınca aşağıdaki durumlarda cayma hakkı **kullanılamaz:**\n\n| # | Durum |\n|---|-------|\n| 1 | Fiyatı borsa/piyasa dalgalanmalarına bağlı mallar (döviz, altın vb.) |\n| 2 | Tüketicinin istekleri veya kişisel ihtiyaçlara göre hazırlanan **özel sipariş** ürünler |\n| 3 | Çabuk bozulabilen veya son kullanma tarihi geçebilecek mallar |\n| 4 | Teslim sonrası ambalajı açılmış; **hijyen ve sağlık** açısından iadesi uygun olmayan ürünler |\n| 5 | Teslimden sonra **başka ürünlerle karışan** mallar |\n| 6 | Abonelik sözleşmesinde gazete/dergi gibi **süreli yayınlar** |\n| 7 | Belirli bir tarihte yapılması gereken **konaklama, taşıma, araç kiralama, yiyecek-içecek** hizmetleri |\n| 8 | Elektronik ortamda anında ifa edilen **dijital içerikler** (tüketici indirmeye/kullanmaya başlamışsa) |\n| 9 | Cayma sür",
+      "verdicts": [
+        {
+          "judge_name": "phrase_check",
+          "judge_kind": "contains",
+          "passed": true,
+          "score": 1.0,
+          "reasoning": "all phrase checks passed",
+          "failed_criteria": [],
+          "cost_usd": 0.0,
+          "latency_ms": 0.0,
+          "raw": {}
+        },
+        {
+          "judge_name": "rubric_check",
+          "judge_kind": "llm_judge",
+          "passed": true,
+          "score": 0.8277777777777778,
+          "reasoning": "",
+          "failed_criteria": [],
+          "cost_usd": 0.021462,
+          "latency_ms": 17963.133499999458,
+          "raw": {
+            "scores": {
+              "faithfulness": {
+                "score": 0.9,
+                "evidence": "Cevap, 6502 Sayılı Tüketicinin Korunması Hakkında Kanun ve Mesafeli Sözleşmeler Yönetmeliği'nin 15. maddesine atıfta bulunmaktadır. Listelenen istisnalar gerçekten bu yönetmelikte yer alan hükümlerle uyumludur. Bilgilendirme eksikliğinde sürenin 1 yıl uzayacağı bilgisi de doğrudur. Uydurma bir içerik tespit edilmemiştir.",
+                "passed": true
+              },
+              "legal_correctness": {
+                "score": 0.85,
+                "evidence": "6502 Sayılı Kanun ve Mesafeli Sözleşmeler Yönetmeliği'nin 15. maddesine doğru atıf yapılmış; 14 günlük cayma süresi, bilgilendirme eksikliğinde 1 yıla uzama, ve cayma hakkının kullanılamadığı haller (özel sipariş ürünler, hijyen ürünleri, dijital içerikler, vb.) doğru şekilde aktarılmıştır. Ancak 'Türk Medeni Kanunu/Borçlar Kanunu' yerine daha spesifik Tüketici Kanunu referansı verilmiş; bu bağlamda ilgili mevzuata uygun bir yaklaşım sergilenmiştir. Cevap kesik kalmış ('Cayma sür' ile bitmekte) ve son madde eksik.",
+                "passed": true
+              },
+              "completeness": {
+                "score": 0.75,
+                "evidence": "Süre (14 gün), bilgilendirme eksikliğinde uzama (1 yıl) ve istisnalar (8 madde artı kesik 9. madde) ele alınmıştır. Ancak cevap '9 | Cayma sür' şeklinde yarım kalmış; muhtemelen 'cayma süresinin sona ermesinden önce ifaya başlanan hizmetler' gibi önemli bir istisna eksik kalmıştır. Cayma hakkının nasıl kullanılacağı (bildirim yöntemi) ve iade süreci gibi ek boyutlara da kısmen değinilmemiştir.",
+                "passed": true
+              },
+              "language_quality": {
+                "score": 0.7,
+                "evidence": "Genel olarak açık, düzenli ve hukuki dile uygun bir Türkçe kullanılmıştır. Tablo formatı anlaşılırlığı artırmaktadır. Ancak cevap yarım cümleyle kesilmiştir: '9 | Cayma sür' — bu ciddi bir dil/sunum kusuru oluşturmaktadır.",
+                "passed": true
+              }
+            },
+            "model": "claude-sonnet-4-6",
+            "input_tokens": 2034,
+            "output_tokens": 1024
+          }
+        }
+      ],
+      "aggregate_score": 0.8966666666666667,
+      "passed": true,
+      "tags": [
+        "tuketici-hukuku"
+      ],
+      "error": null
+    },
+    {
+      "case_id": "nafaka_turleri",
+      "candidate_output": "# Boşanma Sonrası Nafaka Türleri\n\nTürk Medeni Kanunu kapsamında boşanma sonrasında iki temel nafaka türü söz konusudur:\n\n---\n\n## 1. Tedbir Nafakası\n- Boşanma **davası süresince** geçici olarak hükmedilen nafakadır.\n- Dava sonuçlanana kadar eşin ve çocukların geçimini güvence altına alır.\n- Hâkim re'sen (kendiliğinden) karar verebilir.\n\n---\n\n## 2. Yoksulluk Nafakası (TMK m. 175)\n- Boşanma **kararının kesinleşmesinden sonra** ödenen nafakadır.\n- Boşanma yüzünden **yoksulluğa düşecek** olan eşe, daha az kusurlu ya da kusursuz olması koşuluyla bağlanır.\n- **Süresiz** olarak bağlanabilir; ancak belirli koşullarda kaldırılabilir:\n  - Alacaklı eşin yeniden evlenmesi\n  - Taraflardan birinin ölümü\n  - Alacaklının evlilik dışı birliktelik yaşaması\n  - Alacaklının yoksulluktan kurtulması\n\n---\n\n## 3. İştirak Nafakası (TMK m. 182)\n- **Çocuklar için** ödenen nafakadır.\n- Velayeti almayan ebeveyn, çocuğun giderlerine katılmak zorundadır.\n- Çocuğun **ergin olmasına** (18 yaş) kadar devam eder; eğitim sürdüğünde uzatılabilir.\n\n---\n\n## Nafakanın Artırılması / Azaltılması\nKoşulların değişmesi halinde (enflasyon, gelir değişikliği vb.) her iki taraf da nafakanın **uyarlanması** için mahkemeye başvurabilir.\n\n---\n\n> **Not:** Nafaka miktarı ve koşulları her davada farklılık gösterdiğinden, somut durumunuz için bir avukattan hukuki destek",
+      "verdicts": [
+        {
+          "judge_name": "phrase_check",
+          "judge_kind": "contains",
+          "passed": false,
+          "score": 0.6666666666666667,
+          "reasoning": "1/3 phrase checks failed",
+          "failed_criteria": [
+            "missing required phrases: ['iştirak']"
+          ],
+          "cost_usd": 0.0,
+          "latency_ms": 0.0,
+          "raw": {}
+        },
+        {
+          "judge_name": "rubric_check",
+          "judge_kind": "llm_judge",
+          "passed": true,
+          "score": 0.9333333333333331,
+          "reasoning": "Aday cevap, sorulan üç temel nafaka türünü (tedbir, yoksulluk, iştirak) doğru madde atıflarıyla, koşullarıyla ve istisnalarıyla kapsamlı biçimde açıklamaktadır. TMK m. 175 ve m. 182 atıfları doğrudur. Hukuki terminoloji yerinde kullanılmış, dil akıcı ve nettir. Tek küçük kusur, son cümlenin yarım kalması ve tedbir nafakasının teknik olarak boşanma davası \"sürecinde\" geçerli olduğunun başlık ile içerik arasında hafif tutarsızlık yaratmasıdır. Genel olarak yüksek kaliteli bir cevaptır.",
+          "failed_criteria": [],
+          "cost_usd": 0.019695,
+          "latency_ms": 14374.714999999924,
+          "raw": {
+            "scores": {
+              "faithfulness": {
+                "score": 0.95,
+                "evidence": "Cevap, Türk Medeni Kanunu'na (TMK m. 175 ve m. 182) atıflar yaparak tedbir nafakası, yoksulluk nafakası ve iştirak nafakasını açıklamaktadır. Uydurma bilgi içermemekte; tüm açıklamalar genel olarak TMK ile uyumludur.",
+                "passed": true
+              },
+              "legal_correctness": {
+                "score": 0.9,
+                "evidence": "Yoksulluk nafakası için 'TMK m. 175', iştirak nafakası için 'TMK m. 182' atıfları doğrudur. Yoksulluk nafakasının koşulları (daha az kusurlu ya da kusursuz olma, yoksulluğa düşme), iştirak nafakasının erginliğe kadar devam etmesi ve tedbir nafakasının dava süresince geçerli olması hukuki açıdan doğrudur. Küçük bir not: Tedbir nafakası teknik olarak boşanma 'sonrası' değil 'süreci' nafakasıdır; ancak başlık altında bu ayrım yapılmıştır.",
+                "passed": true
+              },
+              "completeness": {
+                "score": 0.95,
+                "evidence": "Beklenen üç nafaka türü (yoksulluk, iştirak, tedbir) eksiksiz ele alınmıştır. Her tür için koşullar, süre ve istisnalar (ölüm, yeniden evlenme, yoksulluktan kurtulma, evlilik dışı birliktelik) açıklanmış; ayrıca nafakanın uyarlanması konusuna da değinilmiştir.",
+                "passed": true
+              },
+              "language_quality": {
+                "score": 0.95,
+                "evidence": "Türkçe gramer doğru ve akıcıdır. 'Hâkim re'sen karar verebilir', 'alacaklı eşin yeniden evlenmesi' gibi hukuki terminoloji yerinde kullanılmıştır. Son cümle yarım kalmış ('...bir avukattan hukuki destek') olmakla birlikte bu küçük bir kusurdur.",
+                "passed": true
+              }
+            },
+            "model": "claude-sonnet-4-6",
+            "input_tokens": 2025,
+            "output_tokens": 908
+          }
+        }
+      ],
+      "aggregate_score": 0.8266666666666665,
+      "passed": false,
+      "tags": [
+        "aile-hukuku",
+        "nafaka"
+      ],
+      "error": null
+    },
+    {
+      "case_id": "vergi_uzlasma",
+      "candidate_output": "# Vergi Ziyaı Cezasında Uzlaşma Müessesesi\n\n## Genel Tanım\n\nUzlaşma, mükellef veya vergi sorumlusunun ikmalen, re'sen veya idarece tarh edilen vergi ve/veya vergi ziyaı cezaları için vergi idaresiyle anlaşarak uyuşmazlığı yargı yoluna gitmeden çözüme kavuşturduğu idari bir müessesedir. **Vergi Usul Kanunu'nun (VUK) Ek 1-12. maddeleri** ile düzenlenmiştir.\n\n---\n\n## Uzlaşma Türleri\n\n### 1. Tarhiyat Öncesi Uzlaşma\n- Vergi incelemesi **tamamlanmadan önce** yapılır.\n- İnceleme elemanının tarhiyat önerisine karşı mükellef uzlaşma talep edebilir.\n- Uzlaşılması hâlinde tarhiyat öncesi uzlaşılan konularda **tarhiyat sonrası uzlaşma yoluna gidilemez.**\n\n### 2. Tarhiyat Sonrası Uzlaşma\n- Vergi **tarhedildikten ve ceza kesildikten sonra** başvurulur.\n- Vergi/ceza ihbarnamesinin tebliğinden itibaren **30 gün** içinde uzlaşma talep edilmelidir.\n- Talep, tarh eden vergi dairesine yazılı olarak yapılır.\n\n---\n\n## Vergi Ziyaı Cezasında Uzlaşma Kapsamı\n\n- **İkmalen, re'sen veya idarece tarh edilen vergilere** bağlı vergi ziyaı cezaları uzlaşma kapsamındadır.\n- **Kaçakçılık suçları** nedeniyle (VUK md. 359) **3 kat** kesilen vergi ziyaı cezaları **uzlaşma kapsamı dışındadır.**\n- Usulsüzlük ve özel usulsüzlük cezaları da uzlaşma kapsamına girmektedir.\n\n---\n\n## Uzlaşma Süreci\n\n1. Mük",
+      "verdicts": [
+        {
+          "judge_name": "phrase_check",
+          "judge_kind": "contains",
+          "passed": true,
+          "score": 1.0,
+          "reasoning": "all phrase checks passed",
+          "failed_criteria": [],
+          "cost_usd": 0.0,
+          "latency_ms": 0.0,
+          "raw": {}
+        },
+        {
+          "judge_name": "rubric_check",
+          "judge_kind": "llm_judge",
+          "passed": false,
+          "score": 0.7777777777777778,
+          "reasoning": "",
+          "failed_criteria": [
+            "completeness (score=0.65): Cevap uzlaşma türlerini, kapsamını, süreyi (30 gün) ve önemli bir istisnayı (kaçakçılık/3 kat ceza) ele almıştır. Ancak cevap 'Uzlaşma Süreci' başlığının altında '1. Mük' noktasında kesilmiştir; sürecin adımları, uzlaşma komisyonları, uzlaşılan tutarın ödeme koşulları, dava açma ile ilişkisi ve uzlaşmanın sonuçları gibi önemli boyutlar tamamlanamamıştır."
+          ],
+          "cost_usd": 0.021428999999999997,
+          "latency_ms": 18271.02559999912,
+          "raw": {
+            "scores": {
+              "faithfulness": {
+                "score": 0.85,
+                "evidence": "Cevap, uzlaşma müessesesini VUK Ek 1-12. maddeleri ile düzenlenmiş bir idari mekanizma olarak tanımlamış; tarhiyat öncesi ve sonrası uzlaşma ayrımını, kaçakçılık suçlarında (VUK md. 359) 3 kat kesilen cezaların uzlaşma dışı kalmasını doğru biçimde aktarmıştır. Cevap genel olarak hukuki doğrulara dayansa da herhangi bir kaynak context sağlanmadığından tamamen doğrulanamaz. Yanıt yarım kalmış ('Mük' ile bitmekte) olup bu durum güvenilirliği kısmen olumsuz etkilemektedir.",
+                "passed": true
+              },
+              "legal_correctness": {
+                "score": 0.8,
+                "evidence": "'Vergi Usul Kanunu'nun (VUK) Ek 1-12. maddeleri ile düzenlenmiştir' ve 'Kaçakçılık suçları nedeniyle (VUK md. 359) 3 kat kesilen vergi ziyaı cezaları uzlaşma kapsamı dışındadır' ifadeleri Türk vergi hukukuyla örtüşmektedir. 30 günlük süre bilgisi de doğrudur. Ancak cevap, VUK md. 359 kapsamındaki cezalar için 2023 sonrası getirilen istisnalar veya uzlaşma komisyonlarının yapısı gibi ek ayrıntılara girememiştir. Rubric Türk Medeni Kanunu/Borçlar Kanunu atıflarını ararken konu vergi hukukuna ilişkin olup bu, değerlendirmeyi kısmen güçleştirmektedir.",
+                "passed": true
+              },
+              "completeness": {
+                "score": 0.65,
+                "evidence": "Cevap uzlaşma türlerini, kapsamını, süreyi (30 gün) ve önemli bir istisnayı (kaçakçılık/3 kat ceza) ele almıştır. Ancak cevap 'Uzlaşma Süreci' başlığının altında '1. Mük' noktasında kesilmiştir; sürecin adımları, uzlaşma komisyonları, uzlaşılan tutarın ödeme koşulları, dava açma ile ilişkisi ve uzlaşmanın sonuçları gibi önemli boyutlar tamamlanamamıştır.",
+                "passed": false
+              },
+              "language_quality": {
+                "score": 0.75,
+                "evidence": "Cevap büyük ölçüde akıcı ve hukuki terminoloji bakımından doğru Türkçe kullanmaktadır: 'ikmalen, re'sen veya idarece tarh edilen', 'mükellef veya vergi sorumlusu' gibi ifadeler yerinde kullanılmıştır. Ancak metin yarım cümleyle ('1. Mük') sona erdiğinden dil kalitesi açısından ciddi bir eksiklik oluşmaktadır.",
+                "passed": true
+              }
+            },
+            "model": "claude-sonnet-4-6",
+            "input_tokens": 2023,
+            "output_tokens": 1024
+          }
+        }
+      ],
+      "aggregate_score": 0.8666666666666667,
+      "passed": false,
+      "tags": [
+        "vergi-hukuku"
+      ],
+      "error": null
+    }
+  ]
+}
